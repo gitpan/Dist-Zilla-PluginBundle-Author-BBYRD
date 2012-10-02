@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.91'; # VERSION
+our $VERSION = '0.92'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -116,11 +116,14 @@ sub configure {
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
-      { 
+   );
+   $self->add_plugins(  # freeform option plugin
+      [MetaResourcesFromGit => {
          x_irc            => (exists $self->payload->{x_irc} ? $self->payload->{x_irc} : 'irc://irc.perl.org/#distzilla'),
          'bugtracker.web' => 'https://github.com/%a/%r/issues',
-      }, 'MetaResourcesFromGit', $self->payload,
-
+      }],
+   );
+   $self->add_merged(
       # 
       # ; Post-build plugins
       # [CopyFilesFromBuild]
@@ -443,7 +446,7 @@ You can connect to the server at 'irc.perl.org' and join this channel: #distzill
 
 =head2 Bugs / Feature Requests
 
-Please report any bugs or feature requests via L<L<https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-Author-BBYRD>|GitHub>.
+Please report any bugs or feature requests via L<L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues>|GitHub>.
 
 =head1 AUTHOR
 
