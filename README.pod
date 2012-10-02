@@ -134,8 +134,8 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
 
 =head1 DESCRIPTION
 
-LE<lt>sanityE<verbar>I frelling hate these thingsE<gt>, but several releases in, I found myself
-needing to keep my CE<lt>dist.iniE<gt> stuff in sync, which requires a single module to
+L<I frelling hate these things|sanity>, but several releases in, I found myself
+needing to keep my C<<< dist.ini >>> stuff in sync, which requires a single module to
 bind them to.
 
 =head1 NAMING SCHEME
@@ -147,33 +147,33 @@ which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
 
 Like I said, I hate writing these personalized modules on CPAN.  I even bantered
-around the idea of using LE<lt>https:E<sol>E<sol>github.comE<sol>SineSwiperE<sol>Dist-Zilla-PluginBundle-BeLike-YouE<sol>blobE<sol>masterE<sol>BeLike-You.podE<verbar>MetaCPAN's author JSON inputE<gt>
+around the idea of using L<MetaCPAN's author JSON input|https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/master/BeLike-You.pod>
 to store the plugin data.  However, keeping the Author plugins separated from the
 real PluginBundles is a step in the right direction.  See
-LE<lt>Dist::Zilla::PluginBundle::Author::KENTNLE<sol>NAMING-SCHEMEE<verbar>KENTNL's comments on the Author namespaceE<gt>
+L<KENTNL's comments on the Author namespace|Dist::Zilla::PluginBundle::Author::KENTNL/NAMING-SCHEME>
 for more information.
 
 =head1 CAVEATS
 
-This uses LE<lt>Dist::Zilla::Role::PluginBundle::MergedE<gt>, so all of the plugins'
+This uses L<Dist::Zilla::Role::PluginBundle::Merged>, so all of the plugins'
 arguments are available, using Merged's rules.  Special care should be
 made with arguments that might not be unique with other plugins.  (Eventually,
-I'll throw these into CE<lt>config_renameE<gt>.)
+I'll throw these into C<<< config_rename >>>.)
 
-If this is a problem, you might want to consider using LE<lt>Dist::Zilla::PluginBundle::FilterE<verbar>@FilterE<gt>.
+If this is a problem, you might want to consider using L<@Filter|Dist::Zilla::PluginBundle::Filter>.
 
-One exception is CE<lt>x_ircE<gt>, which is detected and passed to LE<lt>Dist::Zilla::Plugin::MetaResourcesFromGitE<verbar>MetaResourcesFromGitE<gt>
+One exception is C<<< x_irc >>>, which is detected and passed to L<MetaResourcesFromGit|Dist::Zilla::Plugin::MetaResourcesFromGit>
 properly.
 
 =head1 SEE ALSO
 
-In building my ultimate CE<lt>dist.iniE<gt> file, I did a bunch of research on which
+In building my ultimate C<<< dist.ini >>> file, I did a bunch of research on which
 modules to cram in here.  As a result, this is a pretty large set of plugins,
 but that's exactly how I like my DZIL.  Feel free to research the modules
 listed here, as there's a bunch of good modules that you might want to include
-in your own CE<lt>dist.iniE<gt> andE<sol>or Author bundle.
+in your own C<<< dist.ini >>> andE<sol>or Author bundle.
 
-Also, here's my CE<lt>profile.iniE<gt>, if you're interested:
+Also, here's my C<<< profile.ini >>>, if you're interested:
 
     [TemplateModule/:DefaultModuleMaker]
     template = Module.pm
@@ -214,7 +214,7 @@ Also, here's my CE<lt>profile.iniE<gt>, if you're interested:
 
 =head1 TODO
 
-Create a LE<lt>Pod::WeaverE<gt> author bundle.
+Create a L<Pod::Weaver> author bundle.
 
 =head1 AVAILABILITY
 

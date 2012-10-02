@@ -82,7 +82,7 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::Author::BBYRD" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm",
-         "version" : "0.90"
+         "version" : "0.91"
       }
    },
    "release_status" : "stable",
@@ -97,7 +97,7 @@
          "web" : "https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD"
       }
    },
-   "version" : "0.90",
+   "version" : "0.91",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016000"
@@ -157,6 +157,16 @@
             "class" : "Dist::Zilla::Plugin::License",
             "name" : "@Filter/License",
             "version" : "4.300024"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
+            "name" : "@Filter/ReadmeHtmlInBuild",
+            "version" : "0.120120"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
+            "name" : "@Filter/ReadmePodInBuild",
+            "version" : "0.120120"
          },
          {
             "class" : "Dist::Zilla::Plugin::InstallGuide",
@@ -332,16 +342,6 @@
             "class" : "Dist::Zilla::Plugin::Clean",
             "name" : "@Filter/Clean",
             "version" : "0.07"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
-            "name" : "@Filter/ReadmeHtmlInBuild",
-            "version" : "0.120120"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
-            "name" : "@Filter/ReadmePodInBuild",
-            "version" : "0.120120"
          },
          {
             "class" : "Dist::Zilla::Plugin::AutoPrereqs",
