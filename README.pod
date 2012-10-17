@@ -74,6 +74,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; META maintenance
     [MetaConfig]
     [MetaJSON]
+    [MetaYAML]
  
     [MetaNoIndex]
     directory = t

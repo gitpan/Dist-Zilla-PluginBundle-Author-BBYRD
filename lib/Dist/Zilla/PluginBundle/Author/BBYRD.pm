@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.92'; # VERSION
+our $VERSION = '0.93'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -97,7 +97,8 @@ sub configure {
       # ; META maintenance
       # [MetaConfig]
       # [MetaJSON]
-      qw( CheckPrereqsIndexed MetaConfig MetaJSON ),
+      # [MetaYAML]
+      qw( CheckPrereqsIndexed MetaConfig MetaJSON MetaYAML ),
       
       # 
       # [MetaNoIndex]
@@ -273,6 +274,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; META maintenance
     [MetaConfig]
     [MetaJSON]
+    [MetaYAML]
  
     [MetaNoIndex]
     directory = t
