@@ -1,8 +1,29 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.94 2013-04-22
+----------------
+
+commit 8ae22fcee32f6b8ddebcb842d9157563e2845f2e
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Mon Apr 22 16:27:31 2013 -0400
+
+    Update .travis.yml with new DZIL:P:TCI defaults
+
+commit d99b8f45d866aa709108ddbc78c07a6b93257a70
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Mon Apr 22 10:45:22 2013 -0400
+
+    Add new Pod::Weaver::PluginBundle::Author::BBYRD
+
 v0.93 2012-10-17
 ----------------
+
+commit b395ec4299c1ae2c0aa748f43c520a51f46fe241
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Wed Oct 17 13:58:00 2012 -0400
+
+    Release v0.93
 
 commit bcc0084b89b69e7a846611c198e96c6ade71fcb1
 Author: Brendan Byrd <Perl@ResonatorSoft.org>
