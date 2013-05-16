@@ -1,6 +1,6 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.94'; # VERSION
+our $VERSION = '0.95'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;
@@ -14,6 +14,7 @@ use Pod::Weaver::Plugin::Encoding ();
 use Pod::Weaver::Section::Availability ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
+use Pod::Weaver::Section::Contributors ();
  
 sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 
@@ -88,18 +89,21 @@ sub mvp_bundle_config {
          repository_link    => 'none',
          bugs               => 'metadata',
          bugs_content       => 'Please report any bugs or feature requests via {WEB}.',
-         irc                => 'irc.perl.org, #distzilla, SineSwiper',  ### XXX: Should this grab from x_irc in dist.ini? ###
+         ### XXX: Use a DZIL stash to store the IRC channel? ###
+         irc                => 'irc.perl.org, SineSwiper',
       } ],
       
       # [Authors]
+      # [Contributors]
       # [Legal]
       #  
       # [-Transformer]
       # transformer = List
 
-      [ '@Author::BBYRD/Authors', _exp('Authors'),      {} ],
-      [ '@Author::BBYRD/Legal',   _exp('Legal'),        {} ],
-      [ '@Author::BBYRD/List',    _exp('-Transformer'), { 'transformer' => 'List' } ],
+      [ '@Author::BBYRD/Authors',      _exp('Authors'),      {} ],
+      [ '@Author::BBYRD/Contributors', _exp('Contributors'), {} ],
+      [ '@Author::BBYRD/Legal',        _exp('Legal'),        {} ],
+      [ '@Author::BBYRD/List',         _exp('-Transformer'), { 'transformer' => 'List' } ],
    );
  
    return @plugins;
@@ -153,9 +157,10 @@ Pod::Weaver::PluginBundle::Author::BBYRD - Pod::Weaver Author Bundle for BBYRD
     repository_link = none
     bugs = metadata
     bugs_content = Please report any bugs or feature requests via {WEB}.
-    irc = irc.perl.org, #distzilla, SineSwiper
+    irc = irc.perl.org, SineSwiper
  
     [Authors]
+    [Contributors]
     [Legal]
  
     [-Transformer]
@@ -199,6 +204,10 @@ site near you, or see L<https://metacpan.org/module/Dist::Zilla::PluginBundle::A
 =head1 AUTHOR
 
 Brendan Byrd <BBYRD@CPAN.org>
+
+=head1 CONTRIBUTOR
+
+Brendan Byrd <Perl@ResonatorSoft.org>
 
 =head1 COPYRIGHT AND LICENSE
 

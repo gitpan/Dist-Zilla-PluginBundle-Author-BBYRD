@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.94'; # VERSION
+our $VERSION = '0.95'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -19,6 +19,11 @@ sub configure {
       # [MakeMaker]
       #
       qw( ReportPhase MakeMaker ),
+
+      # 
+      # [ModuleShareDirs]
+      # Dist::Zilla::MintingProfile::Author::BBYRD = profiles
+      $self->config_short_merge('ModuleShareDirs', { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }),
       
       # [Git::NextVersion]
       # first_version = 0.90
@@ -47,10 +52,12 @@ sub configure {
       qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
    );
    $self->add_plugins(
-      # [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-      # [ReadmeAnyFromPod / ReadmePodInBuild]
-      [ReadmeAnyFromPod => ReadmeHtmlInBuild => {}],
-      [ReadmeAnyFromPod => ReadmePodInBuild  => {}],
+      # [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+      # [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+      # [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
+      [ReadmeAnyFromPod => ReadmePodInRoot   => {}],
+      [ReadmeAnyFromPod => ReadmeTextInBuild => {}],
+      [ReadmeAnyFromPod => ReadmeHTMLInBuild => {}],
    );
    $self->add_merged(
       # [InstallGuide]
@@ -85,9 +92,8 @@ sub configure {
       # [ReportVersions::Tiny]
       # [Test::CheckManifest]
       # [Test::DistManifest]
-      # [Test::UseAllModules]
       # [Test::Version]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest UseAllModules Version)),
+      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest Version)),
       'ReportVersions::Tiny',
 
       # 
@@ -130,14 +136,17 @@ sub configure {
       }],
    );
    $self->add_merged(
+      #
+      # [ContributorsFromGit]
+      'ContributorsFromGit',
+      
       # 
       # ; Post-build plugins
       # [CopyFilesFromBuild]
       # move = .gitignore
-      # copy = README.pod
+      # move = README.pod
       $self->config_short_merge('CopyFilesFromBuild', { 
-         move => ['.gitignore'],
-         copy => ['README.pod'],
+         move => [qw(.gitignore README.pod)],
       }),
 
       # 
@@ -154,6 +163,7 @@ sub configure {
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
       $self->config_short_merge('Git::CommitBuild', { 
+         branch          => '',
          release_branch  => 'build/%b',
          release_message => 'Release build of v%v (on %b)',
       }),
@@ -165,13 +175,13 @@ sub configure {
       # allow_dirty = README.pod
       # changelog =
       # commit_msg = Release v%v
-      # push_to = origin
+      # push_to = origin master:master
       # push_to = origin build/master:build/master
       $self->config_short_merge('@Git', { 
          allow_dirty => [qw(dist.ini .travis.yml README.pod)],
          changelog   => '',
          commit_msg  => 'Release v%v',
-         push_to     => ['origin', 'origin build/master:build/master'],
+         push_to     => ['origin master:master', 'origin build/master:build/master'],
       }),
 
       # 
@@ -220,6 +230,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Makefile.PL maker
     [MakeMaker]
  
+    [ModuleShareDirs]
+    Dist::Zilla::MintingProfile::Author::BBYRD = profiles
+ 
     [Git::NextVersion]
     first_version = 0.90
  
@@ -238,8 +251,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ManifestSkip]
     [Manifest]
     [License]
-    [ReadmeAnyFromPod / ReadmeHtmlInBuild]
-    [ReadmeAnyFromPod / ReadmePodInBuild]
+    [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
+    [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
+    [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
     [InstallGuide]
     [ExecDir]
  
@@ -268,7 +282,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [ReportVersions::Tiny]
     [Test::CheckManifest]
     [Test::DistManifest]
-    [Test::UseAllModules]
     [Test::Version]
  
     ; Prereqs
@@ -295,10 +308,12 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     x_irc          = irc://irc.perl.org/#distzilla
     bugtracker.web = https://github.com/%a/%r/issues
  
+    [ContributorsFromGit]
+ 
     ; Post-build plugins
     [CopyFilesFromBuild]
     move = .gitignore
-    copy = README.pod
+    move = README.pod
  
     ; Post-build Git plugins
     [TravisYML]
@@ -306,6 +321,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
+    branch = 
     release_branch = build/%b
     release_message = Release build of v%v (on %b)
  
@@ -315,7 +331,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     allow_dirty = README.pod
     changelog =
     commit_msg = Release v%v
-    push_to = origin
+    push_to = origin master:master
     push_to = origin build/master:build/master
  
     [GitHub::Update]
@@ -412,10 +428,6 @@ Also, here's my C<<< profile.ini >>>, if you're interested:
  
     [GitHub::Create]
 
-=head1 TODO
-
-Create a L<Pod::Weaver> author bundle.
-
 =head1 AVAILABILITY
 
 The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki>.
@@ -441,7 +453,7 @@ those networks/channels and get help:
 
 irc.perl.org
 
-You can connect to the server at 'irc.perl.org' and join this channel: #distzilla then talk to this person for help: SineSwiper.
+You can connect to the server at 'irc.perl.org' and talk to this person for help: SineSwiper.
 
 =back
 
@@ -452,6 +464,10 @@ Please report any bugs or feature requests via L<https://github.com/SineSwiper/D
 =head1 AUTHOR
 
 Brendan Byrd <BBYRD@CPAN.org>
+
+=head1 CONTRIBUTOR
+
+Brendan Byrd <Perl@ResonatorSoft.org>
 
 =head1 COPYRIGHT AND LICENSE
 

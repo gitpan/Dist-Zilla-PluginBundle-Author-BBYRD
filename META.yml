@@ -4,9 +4,9 @@ author:
   - 'Brendan Byrd <BBYRD@CPAN.org>'
 build_requires:
   Test::CheckDeps: 0.002
-  Test::UseAllModules: 0.14
+  Test::More: 0.94
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Zilla version 4.300034, CPAN::Meta::Converter version 2.130880'
 license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,17 +19,21 @@ no_index:
     - examples
     - corpus
 provides:
+  Dist::Zilla::MintingProfile::Author::BBYRD:
+    file: lib/Dist/Zilla/MintingProfile/Author/BBYRD.pm
+    version: 0.95
   Dist::Zilla::PluginBundle::Author::BBYRD:
     file: lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm
-    version: 0.94
+    version: 0.95
   Pod::Weaver::PluginBundle::Author::BBYRD:
     file: lib/Pod/Weaver/PluginBundle/Author/BBYRD.pm
-    version: 0.94
+    version: 0.95
 requires:
   Dist::Zilla: 4.300034
   Dist::Zilla::Plugin::CheckExtraTests: 0.011
   Dist::Zilla::Plugin::CheckPrereqsIndexed: 0.008
   Dist::Zilla::Plugin::Clean: 0.07
+  Dist::Zilla::Plugin::ContributorsFromGit: 0.006
   Dist::Zilla::Plugin::CopyFilesFromBuild: 0.103510
   Dist::Zilla::Plugin::GitFmtChanges: 0.005
   Dist::Zilla::Plugin::InstallGuide: 1.200000
@@ -43,29 +47,30 @@ requires:
   Dist::Zilla::Plugin::ReportPhase: 0
   Dist::Zilla::Plugin::ReportVersions::Tiny: 1.08
   Dist::Zilla::Plugin::Test::CPAN::Meta::JSON: 0.003
-  Dist::Zilla::Plugin::Test::CheckDeps: 0.005
+  Dist::Zilla::Plugin::Test::CheckDeps: 0.006
   Dist::Zilla::Plugin::Test::CheckManifest: 0.04
-  Dist::Zilla::Plugin::Test::Compile: 2.001
+  Dist::Zilla::Plugin::Test::Compile: 2.002
   Dist::Zilla::Plugin::Test::DistManifest: 2.000003
   Dist::Zilla::Plugin::Test::EOL: 0.07
   Dist::Zilla::Plugin::Test::MinimumVersion: 2.000004
   Dist::Zilla::Plugin::Test::Portability: 2.000004
   Dist::Zilla::Plugin::Test::Synopsis: 2.000003
-  Dist::Zilla::Plugin::Test::UseAllModules: 0.002
   Dist::Zilla::Plugin::Test::Version: 0.002004
-  Dist::Zilla::Plugin::TravisYML: 0.96
+  Dist::Zilla::Plugin::TravisYML: 0.97
   Dist::Zilla::PluginBundle::Git: 2.013
   Dist::Zilla::PluginBundle::Git::CheckFor: 0.006
-  Dist::Zilla::PluginBundle::GitHub: 0.32
+  Dist::Zilla::PluginBundle::GitHub: 0.34
   Dist::Zilla::PluginBundle::Prereqs: 0.92
   Dist::Zilla::Role::PluginBundle::Merged: 0.92
-  Moose: 2.0801
+  Dist::Zilla::Stash::PAUSE::Encrypted: 0.003
+  Moose: 2.0802
   Pod::Coverage::TrustPod: 0.100002
   Pod::Elemental::Transformer::List: 0.101620
   Pod::Weaver: 3.101638
   Pod::Weaver::Plugin::Encoding: 0.01
   Pod::Weaver::Plugin::WikiDoc: 0.093002
   Pod::Weaver::Section::Availability: 1.20
+  Pod::Weaver::Section::Contributors: 0.005
   Pod::Weaver::Section::Support: 1.001
   Test::CPAN::Meta::JSON: 0.14
   autovivification: 0.11
@@ -78,10 +83,10 @@ resources:
   bugtracker: https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issues
   homepage: https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki
   repository: git://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD.git
-version: 0.94
+version: 0.95
 x_Dist_Zilla:
   perl:
-    version: 5.016003
+    version: 5.014002
   plugins:
     -
       class: Dist::Zilla::Plugin::ReportPhase
@@ -90,6 +95,10 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@Filter/MakeMaker'
+      version: 4.300034
+    -
+      class: Dist::Zilla::Plugin::ModuleShareDirs
+      name: '@Filter/ModuleShareDirs'
       version: 4.300034
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
@@ -129,11 +138,15 @@ x_Dist_Zilla:
       version: 4.300034
     -
       class: Dist::Zilla::Plugin::ReadmeAnyFromPod
-      name: '@Filter/ReadmeHtmlInBuild'
+      name: '@Filter/ReadmePodInRoot'
       version: 0.120120
     -
       class: Dist::Zilla::Plugin::ReadmeAnyFromPod
-      name: '@Filter/ReadmePodInBuild'
+      name: '@Filter/ReadmeTextInBuild'
+      version: 0.120120
+    -
+      class: Dist::Zilla::Plugin::ReadmeAnyFromPod
+      name: '@Filter/ReadmeHTMLInBuild'
       version: 0.120120
     -
       class: Dist::Zilla::Plugin::InstallGuide
@@ -146,7 +159,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::Compile
       name: '@Filter/Test::Compile'
-      version: 2.001
+      version: 2.002
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Filter/PodSyntaxTests'
@@ -170,7 +183,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::CheckDeps
       name: '@Filter/Test::CheckDeps'
-      version: 0.005
+      version: 0.006
     -
       class: Dist::Zilla::Plugin::Test::Portability
       name: '@Filter/Test::Portability'
@@ -187,10 +200,6 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Test::DistManifest
       name: '@Filter/Test::DistManifest'
       version: 2.000003
-    -
-      class: Dist::Zilla::Plugin::Test::UseAllModules
-      name: '@Filter/Test::UseAllModules'
-      version: 0.002
     -
       class: Dist::Zilla::Plugin::Test::Version
       name: '@Filter/Test::Version'
@@ -228,6 +237,10 @@ x_Dist_Zilla:
       name: '@Filter/MetaResourcesFromGit'
       version: 1.103620
     -
+      class: Dist::Zilla::Plugin::ContributorsFromGit
+      name: '@Filter/ContributorsFromGit'
+      version: 0.006
+    -
       class: Dist::Zilla::Plugin::CopyFilesFromBuild
       name: '@Filter/CopyFilesFromBuild'
       version: 0.103510
@@ -258,7 +271,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Filter/GitHub::Update'
-      version: 0.32
+      version: 0.34
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Filter/TestRelease'
@@ -332,3 +345,5 @@ x_Dist_Zilla:
     config:
       is_trial: 0
     version: 4.300034
+x_contributors:
+  - 'Brendan Byrd <Perl@ResonatorSoft.org>'
