@@ -32,7 +32,7 @@
          "requires" : {
             "Dist::Zilla" : "4.300034",
             "Dist::Zilla::Plugin::CheckExtraTests" : "0.011",
-            "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.008",
+            "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.009",
             "Dist::Zilla::Plugin::Clean" : "0.07",
             "Dist::Zilla::Plugin::ContributorsFromGit" : "0.006",
             "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0.103510",
@@ -44,20 +44,20 @@
             "Dist::Zilla::Plugin::NoTabsTests" : "0.01",
             "Dist::Zilla::Plugin::OurPkgVersion" : "0.004000",
             "Dist::Zilla::Plugin::PodWeaver" : "3.101641",
-            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.120120",
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.131500",
             "Dist::Zilla::Plugin::ReportPhase" : "0",
-            "Dist::Zilla::Plugin::ReportVersions::Tiny" : "1.08",
             "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" : "0.003",
             "Dist::Zilla::Plugin::Test::CheckDeps" : "0.006",
             "Dist::Zilla::Plugin::Test::CheckManifest" : "0.04",
             "Dist::Zilla::Plugin::Test::Compile" : "2.002",
             "Dist::Zilla::Plugin::Test::DistManifest" : "2.000003",
             "Dist::Zilla::Plugin::Test::EOL" : "0.07",
-            "Dist::Zilla::Plugin::Test::MinimumVersion" : "2.000004",
+            "Dist::Zilla::Plugin::Test::MinimumVersion" : "2.000005",
             "Dist::Zilla::Plugin::Test::Portability" : "2.000004",
+            "Dist::Zilla::Plugin::Test::ReportPrereqs" : "0.006",
             "Dist::Zilla::Plugin::Test::Synopsis" : "2.000003",
             "Dist::Zilla::Plugin::Test::Version" : "0.002004",
-            "Dist::Zilla::Plugin::TravisYML" : "0.97",
+            "Dist::Zilla::Plugin::TravisYML" : "0.98",
             "Dist::Zilla::PluginBundle::Git" : "2.013",
             "Dist::Zilla::PluginBundle::Git::CheckFor" : "0.006",
             "Dist::Zilla::PluginBundle::GitHub" : "0.34",
@@ -75,10 +75,10 @@
             "Pod::Weaver::Section::Support" : "1.001",
             "Test::CPAN::Meta::JSON" : "0.14",
             "autovivification" : "0.11",
-            "indirect" : "0.29",
+            "indirect" : "0.30",
             "multidimensional" : "0.011",
             "perl" : "v5.10.1",
-            "sanity" : "0.95"
+            "sanity" : "0.96"
          }
       },
       "test" : {
@@ -91,15 +91,15 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::BBYRD" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/BBYRD.pm",
-         "version" : "0.95"
+         "version" : "0.96"
       },
       "Dist::Zilla::PluginBundle::Author::BBYRD" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/BBYRD.pm",
-         "version" : "0.95"
+         "version" : "0.96"
       },
       "Pod::Weaver::PluginBundle::Author::BBYRD" : {
          "file" : "lib/Pod/Weaver/PluginBundle/Author/BBYRD.pm",
-         "version" : "0.95"
+         "version" : "0.96"
       }
    },
    "release_status" : "stable",
@@ -115,7 +115,7 @@
       },
       "x_irc" : "irc://irc.perl.org/#distzilla"
    },
-   "version" : "0.95",
+   "version" : "0.96",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.014002"
@@ -184,17 +184,17 @@
          {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
             "name" : "@Filter/ReadmePodInRoot",
-            "version" : "0.120120"
+            "version" : "0.131500"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
             "name" : "@Filter/ReadmeTextInBuild",
-            "version" : "0.120120"
+            "version" : "0.131500"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
             "name" : "@Filter/ReadmeHTMLInBuild",
-            "version" : "0.120120"
+            "version" : "0.131500"
          },
          {
             "class" : "Dist::Zilla::Plugin::InstallGuide",
@@ -249,7 +249,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Test::MinimumVersion",
             "name" : "@Filter/Test::MinimumVersion",
-            "version" : "2.000004"
+            "version" : "2.000005"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::CheckManifest",
@@ -274,7 +274,7 @@
          {
             "class" : "Dist::Zilla::Plugin::CheckPrereqsIndexed",
             "name" : "@Filter/CheckPrereqsIndexed",
-            "version" : "0.008"
+            "version" : "0.009"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaConfig",

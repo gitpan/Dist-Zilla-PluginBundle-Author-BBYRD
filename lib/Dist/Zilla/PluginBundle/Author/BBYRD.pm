@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.95'; # VERSION
+our $VERSION = '0.96'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -89,12 +89,11 @@ sub configure {
       # ;[Test::Pod::No404s]     ; ...I really need to create my own
       # [Test::Synopsis]
       # [Test::MinimumVersion]
-      # [ReportVersions::Tiny]
+      # [Test::ReportPrereqs]
       # [Test::CheckManifest]
       # [Test::DistManifest]
       # [Test::Version]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion CheckManifest DistManifest Version)),
-      'ReportVersions::Tiny',
+      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version)),
 
       # 
       # ; Prereqs
@@ -279,7 +278,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ;[Test::Pod::No404s]     ; ...I really need to create my own
     [Test::Synopsis]
     [Test::MinimumVersion]
-    [ReportVersions::Tiny]
+    [Test::ReportPrereqs]
     [Test::CheckManifest]
     [Test::DistManifest]
     [Test::Version]
@@ -388,45 +387,6 @@ modules to cram in here.  As a result, this is a pretty large set of plugins,
 but that's exactly how I like my DZIL.  Feel free to research the modules
 listed here, as there's a bunch of good modules that you might want to include
 in your own C<<< dist.ini >>> andE<sol>or Author bundle.
-
-Also, here's my C<<< profile.ini >>>, if you're interested:
-
-    [TemplateModule/:DefaultModuleMaker]
-    template = Module.pm
- 
-    [DistINI]
-    append_file = plugins.ini
- 
-    [GatherDir::Template]
-    root = skel
- 
-    [GenerateFile / Generate-.gitignore]
-    filename = .gitignore
-    is_template = 1
-    content = MANIFEST
-    content = MANIFEST.bak
-    content = Makefile
-    content = Makefile.old
-    content = Build
-    content = Build.bat
-    content = META.*
-    content = MYMETA.*
-    content = .build/
-    content = _build/
-    content = blib/
-    content = inc/
-    content = .lwpcookies
-    content = .last_cover_stats
-    content = nytprof.out
-    content = pod2htm*.tmp
-    content = pm_to_blib
-    content = {{$dist->name}}-*
-    content = {{$dist->name}}-*.tar.gz
- 
-    [Git::Init]
-    commit_message = Initial commit
- 
-    [GitHub::Create]
 
 =head1 AVAILABILITY
 
