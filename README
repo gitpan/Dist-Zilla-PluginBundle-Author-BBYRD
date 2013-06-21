@@ -54,7 +54,7 @@ SYNOPSIS
         [Test::CPAN::Meta::JSON]
         [Test::CheckDeps]
         [Test::Portability]
-        ;[Test::Pod::LinkCheck]  ; Both of these are borked...  
+        ;[Test::Pod::LinkCheck]  ; Both of these are borked...
         ;[Test::Pod::No404s]     ; ...I really need to create my own
         [Test::Synopsis]
         [Test::MinimumVersion]
@@ -96,11 +96,14 @@ SYNOPSIS
  
         ; Post-build Git plugins
         [TravisYML]
-        test_min_deps = 1
+        ; keep sanity from balking at these
+        pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
+        ; don't test Perl 5.8
+        perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
  
         [Git::CheckFor::CorrectBranch]
         [Git::CommitBuild]
-        branch = 
+        branch =
         release_branch = build/%b
         release_message = Release build of v%v (on %b)
  

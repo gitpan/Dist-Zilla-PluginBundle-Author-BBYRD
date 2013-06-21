@@ -1,6 +1,6 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.96'; # VERSION
+our $VERSION = '0.97'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;
@@ -204,10 +204,6 @@ site near you, or see L<https://metacpan.org/module/Dist::Zilla::PluginBundle::A
 =head1 AUTHOR
 
 Brendan Byrd <BBYRD@CPAN.org>
-
-=head1 CONTRIBUTOR
-
-Brendan Byrd <Perl@ResonatorSoft.org>
 
 =head1 COPYRIGHT AND LICENSE
 

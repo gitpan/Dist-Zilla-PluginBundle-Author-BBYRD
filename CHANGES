@@ -1,6 +1,15 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.97 2013-06-21
+----------------
+
+commit 6b30b8034054d18558e7b71431303b3802147db9
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Fri Jun 21 05:16:31 2013 -0400
+
+    Add some extra TravisYML options
+
 v0.96 2013-06-04
 ----------------
 

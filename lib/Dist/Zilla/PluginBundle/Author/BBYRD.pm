@@ -1,15 +1,15 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.96'; # VERSION
+our $VERSION = '0.97'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
 use Moose;
- 
+
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
-   mv_plugins => [ qw( PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild Git::CheckFor::CorrectBranch @Git ) ],
+   mv_plugins => [ qw( PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild Git::CheckFor::CorrectBranch @Git TravisYML ) ],
 };
- 
+
 sub configure {
    my $self = shift;
    $self->add_merged(
@@ -20,11 +20,11 @@ sub configure {
       #
       qw( ReportPhase MakeMaker ),
 
-      # 
+      #
       # [ModuleShareDirs]
       # Dist::Zilla::MintingProfile::Author::BBYRD = profiles
       $self->config_short_merge('ModuleShareDirs', { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }),
-      
+
       # [Git::NextVersion]
       # first_version = 0.90
       $self->config_short_merge('Git::NextVersion', { first_version => '0.90' }),
@@ -39,7 +39,7 @@ sub configure {
       # [PodWeaver]
       # config_plugin = @Author::BBYRD
       $self->config_short_merge('PodWeaver', { config_plugin => '@Author::BBYRD' }),
-      
+
       #
       # ; File pruners
       # [PruneCruft]
@@ -62,15 +62,15 @@ sub configure {
    $self->add_merged(
       # [InstallGuide]
       # [ExecDir]
-      # 
+      #
       # ; t/* tests
       # [Test::Compile]
-      # 
+      #
       # ; POD tests
       # [PodCoverageTests]
       # [PodSyntaxTests]
       # ;[Test::PodSpelling]  ; Win32 install problems
-      # 
+      #
       # ; Other xt/* tests
       # [RunExtraTests]
       # ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
@@ -81,11 +81,11 @@ sub configure {
       # trailing_whitespace = 0
       $self->config_short_merge('Test::EOL', { trailing_whitespace => 0 }),
 
-      # 
+      #
       # [Test::CPAN::Meta::JSON]
       # [Test::CheckDeps]
       # [Test::Portability]
-      # ;[Test::Pod::LinkCheck]  ; Both of these are borked...  
+      # ;[Test::Pod::LinkCheck]  ; Both of these are borked...
       # ;[Test::Pod::No404s]     ; ...I really need to create my own
       # [Test::Synopsis]
       # [Test::MinimumVersion]
@@ -95,22 +95,22 @@ sub configure {
       # [Test::Version]
       (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version)),
 
-      # 
+      #
       # ; Prereqs
       # [@Prereqs]
       # minimum_perl = 5.10.1
       $self->config_short_merge('@Prereqs', { minimum_perl => '5.10.1' }),
 
-      # 
+      #
       # [CheckPrereqsIndexed]
-      # 
+      #
       # ; META maintenance
       # [MetaConfig]
       # [MetaJSON]
       # [MetaYAML]
       qw( CheckPrereqsIndexed MetaConfig MetaJSON MetaYAML ),
-      
-      # 
+
+      #
       # [MetaNoIndex]
       # directory = t
       # directory = xt
@@ -118,12 +118,12 @@ sub configure {
       # directory = corpus
       $self->config_short_merge('MetaNoIndex', { directory => [qw(t xt examples corpus)] }),
 
-      # 
+      #
       # [MetaProvides::Package]
       # meta_noindex = 1        ; respect prior no_index directives
       $self->config_short_merge('MetaProvides::Package', { meta_noindex => 1 }),
 
-      # 
+      #
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
@@ -138,36 +138,42 @@ sub configure {
       #
       # [ContributorsFromGit]
       'ContributorsFromGit',
-      
-      # 
+
+      #
       # ; Post-build plugins
       # [CopyFilesFromBuild]
       # move = .gitignore
       # move = README.pod
-      $self->config_short_merge('CopyFilesFromBuild', { 
+      $self->config_short_merge('CopyFilesFromBuild', {
          move => [qw(.gitignore README.pod)],
       }),
 
-      # 
+      #
       # ; Post-build Git plugins
       # [TravisYML]
-      # test_min_deps = 1
-      $self->config_short_merge('TravisYML', { test_min_deps => 1 }),
+      # ; keep sanity from balking at these
+      # pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
+      # ; don't test Perl 5.8
+      # perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+      $self->config_short_merge('TravisYML', {
+         pre_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
+         perl_version => '5.19 5.18 5.16 5.14 5.12 5.10',
+      }),
 
-      # 
+      #
       # [Git::CheckFor::CorrectBranch]
       'Git::CheckFor::CorrectBranch',
 
       # [Git::CommitBuild]
       # release_branch = build/%b
       # release_message = Release build of v%v (on %b)
-      $self->config_short_merge('Git::CommitBuild', { 
+      $self->config_short_merge('Git::CommitBuild', {
          branch          => '',
          release_branch  => 'build/%b',
          release_message => 'Release build of v%v (on %b)',
       }),
 
-      # 
+      #
       # [@Git]
       # allow_dirty = dist.ini
       # allow_dirty = .travis.yml
@@ -176,19 +182,19 @@ sub configure {
       # commit_msg = Release v%v
       # push_to = origin master:master
       # push_to = origin build/master:build/master
-      $self->config_short_merge('@Git', { 
+      $self->config_short_merge('@Git', {
          allow_dirty => [qw(dist.ini .travis.yml README.pod)],
          changelog   => '',
          commit_msg  => 'Release v%v',
          push_to     => ['origin master:master', 'origin build/master:build/master'],
       }),
 
-      # 
+      #
       # [GitHub::Update]
       # metacpan = 1
       $self->config_short_merge('GitHub::Update', { metacpan => 1 }),
 
-      # 
+      #
       # [TestRelease]
       # [ConfirmRelease]
       # [UploadToCPAN]
@@ -274,7 +280,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [Test::CPAN::Meta::JSON]
     [Test::CheckDeps]
     [Test::Portability]
-    ;[Test::Pod::LinkCheck]  ; Both of these are borked...  
+    ;[Test::Pod::LinkCheck]  ; Both of these are borked...
     ;[Test::Pod::No404s]     ; ...I really need to create my own
     [Test::Synopsis]
     [Test::MinimumVersion]
@@ -316,11 +322,14 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Post-build Git plugins
     [TravisYML]
-    test_min_deps = 1
+    ; keep sanity from balking at these
+    pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
+    ; don't test Perl 5.8
+    perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
-    branch = 
+    branch =
     release_branch = build/%b
     release_message = Release build of v%v (on %b)
  
@@ -356,7 +365,7 @@ bind them to.
 =head1 NAMING SCHEME
 
 I'm a strong believer in structured order in the chaos that is the CPAN
-namespace.  There's enough cruft in CPAN, with all of the forked modules, 
+namespace.  There's enough cruft in CPAN, with all of the forked modules,
 legacy stuff that should have been removed 10 years ago, and confusion over
 which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)
