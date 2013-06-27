@@ -12,6 +12,7 @@ use List::Util qw/max/;
 my @modules = qw(
   Dist::Zilla
   Dist::Zilla::App::Command::podpreview
+  Dist::Zilla::Plugin::Bootstrap::lib
   Dist::Zilla::Plugin::CheckExtraTests
   Dist::Zilla::Plugin::CheckPrereqsIndexed
   Dist::Zilla::Plugin::Clean
@@ -44,7 +45,9 @@ my @modules = qw(
   Dist::Zilla::PluginBundle::GitHub
   Dist::Zilla::PluginBundle::Prereqs
   Dist::Zilla::Role::PluginBundle::Merged
+  Dist::Zilla::Role::PluginBundle::PluginRemover
   Dist::Zilla::Stash::PAUSE::Encrypted
+  File::ShareDir::Install
   Moose
   Pod::Coverage::TrustPod
   Pod::Elemental::Transformer::List

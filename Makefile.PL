@@ -6,13 +6,17 @@ use 5.010001;
 
 use ExtUtils::MakeMaker 6.30;
 
+use File::ShareDir::Install;
+install_share module => "Dist::Zilla::MintingProfile::Author::BBYRD", "profiles";
 
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "DZIL Author Bundle for BBYRD",
   "AUTHOR" => "Brendan Byrd <BBYRD\@CPAN.org>",
   "BUILD_REQUIRES" => {},
-  "CONFIGURE_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "File::ShareDir::Install" => "0.03"
+  },
   "DISTNAME" => "Dist-Zilla-PluginBundle-Author-BBYRD",
   "EXE_FILES" => [],
   "LICENSE" => "artistic_2",
@@ -20,6 +24,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Dist::Zilla" => "4.300035",
     "Dist::Zilla::App::Command::podpreview" => "0.002",
+    "Dist::Zilla::Plugin::Bootstrap::lib" => "0.02000100",
     "Dist::Zilla::Plugin::CheckExtraTests" => "0.011",
     "Dist::Zilla::Plugin::CheckPrereqsIndexed" => "0.009",
     "Dist::Zilla::Plugin::Clean" => "0.07",
@@ -36,7 +41,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::ReadmeAnyFromPod" => "0.131500",
     "Dist::Zilla::Plugin::ReportPhase" => 0,
     "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON" => "0.003",
-    "Dist::Zilla::Plugin::Test::CheckDeps" => "0.006",
+    "Dist::Zilla::Plugin::Test::CheckDeps" => "0.007",
     "Dist::Zilla::Plugin::Test::CheckManifest" => "0.04",
     "Dist::Zilla::Plugin::Test::Compile" => "2.002",
     "Dist::Zilla::Plugin::Test::DistManifest" => "2.000003",
@@ -46,12 +51,13 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.006",
     "Dist::Zilla::Plugin::Test::Synopsis" => "2.000003",
     "Dist::Zilla::Plugin::Test::Version" => "0.002004",
-    "Dist::Zilla::Plugin::TravisYML" => "1.02",
-    "Dist::Zilla::PluginBundle::Git" => "2.013",
+    "Dist::Zilla::Plugin::TravisYML" => "1.04",
+    "Dist::Zilla::PluginBundle::Git" => "2.014",
     "Dist::Zilla::PluginBundle::Git::CheckFor" => "0.006",
     "Dist::Zilla::PluginBundle::GitHub" => "0.34",
     "Dist::Zilla::PluginBundle::Prereqs" => "0.92",
-    "Dist::Zilla::Role::PluginBundle::Merged" => "0.92",
+    "Dist::Zilla::Role::PluginBundle::Merged" => "1.00",
+    "Dist::Zilla::Role::PluginBundle::PluginRemover" => "0.102",
     "Dist::Zilla::Stash::PAUSE::Encrypted" => "0.003",
     "Moose" => "2.0802",
     "Pod::Coverage::TrustPod" => "0.100002",
@@ -66,13 +72,13 @@ my %WriteMakefileArgs = (
     "autovivification" => "0.11",
     "indirect" => "0.30",
     "multidimensional" => "0.011",
-    "sanity" => "0.96"
+    "sanity" => "1.02"
   },
   "TEST_REQUIRES" => {
-    "Test::CheckDeps" => "0.002",
+    "Test::CheckDeps" => "0.006",
     "Test::More" => "0.94"
   },
-  "VERSION" => "0.97",
+  "VERSION" => "0.98",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -110,5 +116,10 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
 
 WriteMakefile(%WriteMakefileArgs);
 
+{
+package
+MY;
+use File::ShareDir::Install qw(postamble);
+}
 
 

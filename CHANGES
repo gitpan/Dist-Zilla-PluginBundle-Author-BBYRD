@@ -1,8 +1,24 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.98 2013-06-27
+----------------
+
+commit 29518e7c663a177f1b63d52c5b24a83f6a8c0218
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Thu Jun 27 19:05:14 2013 -0400
+
+    Fix bundle to work with new version of Merged + PluginRemover
+    (some profile changes)
+
 v0.97 2013-06-21
 ----------------
+
+commit df47687b87963f4bdeb59f9721095989ec21226c
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Fri Jun 21 05:38:17 2013 -0400
+
+    Release v0.97
 
 commit 6b30b8034054d18558e7b71431303b3802147db9
 Author: Brendan Byrd <Perl@ResonatorSoft.org>

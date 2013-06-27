@@ -1,14 +1,19 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.97'; # VERSION
+our $VERSION = '0.98'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
 use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
-   mv_plugins => [ qw( PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild Git::CheckFor::CorrectBranch @Git TravisYML ) ],
+   mv_plugins => [ qw(
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs
+      PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
+      Git::CheckFor::CorrectBranch @Git TravisYML
+   ) ],
 };
+with 'Dist::Zilla::Role::PluginBundle::PluginRemover';
 
 sub configure {
    my $self = shift;
@@ -23,7 +28,7 @@ sub configure {
       #
       # [ModuleShareDirs]
       # Dist::Zilla::MintingProfile::Author::BBYRD = profiles
-      $self->config_short_merge('ModuleShareDirs', { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }),
+      ['ModuleShareDirs' => { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }],
 
       # [Git::NextVersion]
       # first_version = 0.90
@@ -50,16 +55,15 @@ sub configure {
       # [Manifest]
       # [License]
       qw( PruneCruft GitFmtChanges ManifestSkip Manifest License ),
-   );
-   $self->add_plugins(
+
       # [ReadmeAnyFromPod / ReadmePodInRoot]    ; Pod README for Root (for GitHub, etc.)
       # [ReadmeAnyFromPod / ReadmeTextInBuild]  ; Text README for Build
       # [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
       [ReadmeAnyFromPod => ReadmePodInRoot   => {}],
       [ReadmeAnyFromPod => ReadmeTextInBuild => {}],
       [ReadmeAnyFromPod => ReadmeHTMLInBuild => {}],
-   );
-   $self->add_merged(
+
+      #
       # [InstallGuide]
       # [ExecDir]
       #
@@ -127,14 +131,11 @@ sub configure {
       # [MetaResourcesFromGit]
       # x_irc          = irc://irc.perl.org/#distzilla
       # bugtracker.web = https://github.com/%a/%r/issues
-   );
-   $self->add_plugins(  # freeform option plugin
       [MetaResourcesFromGit => {
          x_irc            => (exists $self->payload->{x_irc} ? $self->payload->{x_irc} : 'irc://irc.perl.org/#distzilla'),
          'bugtracker.web' => 'https://github.com/%a/%r/issues',
       }],
-   );
-   $self->add_merged(
+
       #
       # [ContributorsFromGit]
       'ContributorsFromGit',
@@ -201,16 +202,6 @@ sub configure {
       # [InstallRelease]
       # [Clean]
       qw( TestRelease ConfirmRelease UploadToCPAN InstallRelease Clean ),
-   );
-}
-
-### TODO: This should probably go into DZIL:R:PB:Merged
-sub config_short_merge {
-   my ($self, $mod_list, $config_hash) = @_;
-   return (
-      { %$config_hash, %{$self->payload} },
-      (ref $mod_list ? @$mod_list : $mod_list),
-      $self->payload,
    );
 }
 
