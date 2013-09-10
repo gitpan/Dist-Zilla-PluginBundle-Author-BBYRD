@@ -14,6 +14,7 @@ lib/Pod/Weaver/PluginBundle/Author/BBYRD.pm
 profiles/default/Module.pm
 profiles/default/plugins.ini
 profiles/default/profile.ini
+profiles/default/skel/t/01-basic.t
 t/00-check-deps.t
 t/00-compile.t
 t/00-report-prereqs.t

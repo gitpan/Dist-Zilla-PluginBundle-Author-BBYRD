@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.98'; # VERSION
+our $VERSION = '0.99'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -8,7 +8,7 @@ use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
-      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
       Git::CheckFor::CorrectBranch @Git TravisYML
    ) ],
@@ -24,11 +24,6 @@ sub configure {
       # [MakeMaker]
       #
       qw( ReportPhase MakeMaker ),
-
-      #
-      # [ModuleShareDirs]
-      # Dist::Zilla::MintingProfile::Author::BBYRD = profiles
-      ['ModuleShareDirs' => { 'Dist::Zilla::MintingProfile::Author::BBYRD' => 'profiles' }],
 
       # [Git::NextVersion]
       # first_version = 0.90
@@ -152,11 +147,13 @@ sub configure {
       #
       # ; Post-build Git plugins
       # [TravisYML]
+      # notify_irc = irc://irc.perl.org/#sanity
       # ; keep sanity from balking at these
       # pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
       # ; don't test Perl 5.8
       # perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
       $self->config_short_merge('TravisYML', {
+         notify_irc => 'irc://irc.perl.org/#sanity',
          pre_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
          perl_version => '5.19 5.18 5.16 5.14 5.12 5.10',
       }),
@@ -225,9 +222,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Makefile.PL maker
     [MakeMaker]
- 
-    [ModuleShareDirs]
-    Dist::Zilla::MintingProfile::Author::BBYRD = profiles
  
     [Git::NextVersion]
     first_version = 0.90
@@ -313,6 +307,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     ; Post-build Git plugins
     [TravisYML]
+    notify_irc = irc://irc.perl.org/#sanity
     ; keep sanity from balking at these
     pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
     ; don't test Perl 5.8
@@ -427,7 +422,7 @@ Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 CONTRIBUTOR
 
-Brendan Byrd <Perl@ResonatorSoft.org>
+Brendan Byrd <bbyrd@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

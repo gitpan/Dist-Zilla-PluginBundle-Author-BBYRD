@@ -1,6 +1,6 @@
 package Dist::Zilla::MintingProfile::Author::BBYRD;
 
-our $VERSION = '0.98'; # VERSION
+our $VERSION = '0.99'; # VERSION
 # ABSTRACT: DZIL MintingProfile for BBYRD
 
 use sanity;

@@ -9,9 +9,6 @@ SYNOPSIS
         ; Makefile.PL maker
         [MakeMaker]
  
-        [ModuleShareDirs]
-        Dist::Zilla::MintingProfile::Author::BBYRD = profiles
- 
         [Git::NextVersion]
         first_version = 0.90
  
@@ -96,6 +93,7 @@ SYNOPSIS
  
         ; Post-build Git plugins
         [TravisYML]
+        notify_irc = irc://irc.perl.org/#sanity
         ; keep sanity from balking at these
         pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
         ; don't test Perl 5.8
@@ -200,7 +198,7 @@ AUTHOR
     Brendan Byrd <BBYRD@CPAN.org>
 
 CONTRIBUTOR
-    Brendan Byrd <Perl@ResonatorSoft.org>
+    Brendan Byrd <bbyrd@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2013 by Brendan Byrd.

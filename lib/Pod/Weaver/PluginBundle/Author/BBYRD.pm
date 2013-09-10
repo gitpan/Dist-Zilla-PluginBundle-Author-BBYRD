@@ -1,6 +1,6 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
-our $VERSION = '0.98'; # VERSION
+our $VERSION = '0.99'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;

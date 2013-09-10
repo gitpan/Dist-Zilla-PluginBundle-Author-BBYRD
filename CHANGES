@@ -1,8 +1,23 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v0.99 2013-09-10
+----------------
+
+commit 2a23fa2a27d0eac67c40f3b8235167d51be47900
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Tue Sep 10 08:17:32 2013 -0400
+
+    Fix ModuleShareDirs, notify_irc, and .mailmap
+
 v0.98 2013-06-27
 ----------------
+
+commit d62fbbce79161ff355e9668e907032dfe1feaecf
+Author: Brendan Byrd <Perl@ResonatorSoft.org>
+Date:   Thu Jun 27 19:19:21 2013 -0400
+
+    Release v0.98
 
 commit 29518e7c663a177f1b63d52c5b24a83f6a8c0218
 Author: Brendan Byrd <Perl@ResonatorSoft.org>
