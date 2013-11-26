@@ -1,148 +1,143 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v1.00 2013-11-25
+----------------
+
+[dfe62b3]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-11-23 23:16:43 -0500 (2 days ago)
+
+Merge branch 'master' of github.com:SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD
+
+[7f9dba6]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-11-23 23:09:58 -0500 (2 days ago)
+
+Change around a few modules
+
++Test::CPAN::Changes
+-MetaResourcesFromGit
++GithubMeta
+
+Add formatting to GitFmtChanges
+
+[101a295]
+* Author: Sergey Romanov <complefor@rambler.ru>
+* Date:   2013-11-16 06:31:52 +0400 (10 days ago)
+
+change PWP::Encoding to PWP::SingleEncoding
+
+
 v0.99 2013-09-10
 ----------------
 
-commit 2a23fa2a27d0eac67c40f3b8235167d51be47900
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Tue Sep 10 08:17:32 2013 -0400
+[2a23fa2]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-09-10 08:17:32 -0400 (3 months ago)
 
-    Fix ModuleShareDirs, notify_irc, and .mailmap
+Fix ModuleShareDirs, notify_irc, and .mailmap
+
 
 v0.98 2013-06-27
 ----------------
 
-commit d62fbbce79161ff355e9668e907032dfe1feaecf
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Thu Jun 27 19:19:21 2013 -0400
+[d62fbbc]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-06-27 19:19:21 -0400 (5 months ago)
 
-    Release v0.98
+Release v0.98
 
-commit 29518e7c663a177f1b63d52c5b24a83f6a8c0218
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Thu Jun 27 19:05:14 2013 -0400
+[29518e7]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-06-27 19:05:14 -0400 (5 months ago)
 
-    Fix bundle to work with new version of Merged + PluginRemover
-    (some profile changes)
+Fix bundle to work with new version of Merged + PluginRemover
+(some profile changes)
+
 
 v0.97 2013-06-21
 ----------------
 
-commit df47687b87963f4bdeb59f9721095989ec21226c
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Fri Jun 21 05:38:17 2013 -0400
+[df47687]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-06-21 05:38:17 -0400 (5 months ago)
 
-    Release v0.97
+Release v0.97
 
-commit 6b30b8034054d18558e7b71431303b3802147db9
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Fri Jun 21 05:16:31 2013 -0400
+[6b30b80]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-06-21 05:16:31 -0400 (5 months ago)
 
-    Add some extra TravisYML options
+Add some extra TravisYML options
+
 
 v0.96 2013-06-04
 ----------------
 
-commit e891e4f5fa7052332ff5ad464d213c300e5fec48
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Sun Jun 2 14:47:04 2013 -0400
+[e891e4f]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-06-02 14:47:04 -0400 (6 months ago)
 
-    Replace ReportVersions::Tiny with Test::ReportPrereqs
-    Remove dupe profile.ini in SEE ALSO section
+Replace ReportVersions::Tiny with Test::ReportPrereqs
+Remove dupe profile.ini in SEE ALSO section
+
 
 v0.95 2013-05-16
 ----------------
 
-commit 126634f1db1e18a30e5587d98dad6fd82ba5be0a
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Thu May 16 18:36:34 2013 -0400
+[126634f]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-05-16 18:36:34 -0400 (6 months ago)
 
-    Add new .mailmap
-    Add dep to Stash::PAUSE::Encrypted
+Add new .mailmap
+Add dep to Stash::PAUSE::Encrypted
 
-commit 6783709d3fd16deff8b705f73f0f1a9e6e41875f
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Sat Apr 27 12:48:46 2013 -0400
+[6783709]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-27 12:48:46 -0400 (7 months ago)
 
-    Fix new dependency changes
+Fix new dependency changes
 
-commit 3011444e28a23a205c041647b7abfc84693b763d
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Sat Apr 27 10:16:50 2013 -0400
+[3011444]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-27 10:16:50 -0400 (7 months ago)
 
-    Add Author minting profile
+Add Author minting profile
 
-commit 1ec6fd43a7d1929ff55ad4425895baac160728f0
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Sat Apr 27 10:10:41 2013 -0400
+[1ec6fd4]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-27 10:10:41 -0400 (7 months ago)
 
-    Remove IRC room name from Support section
-    Remove Test::UseAllModules (redundant with Test::Compile)
-    Fix README.pod to not end up in build (was installing in lib/)
-    Add support for Contributors (via Git)
+Remove IRC room name from Support section
+Remove Test::UseAllModules (redundant with Test::Compile)
+Fix README.pod to not end up in build (was installing in lib/)
+Add support for Contributors (via Git)
 
-commit 45fe424bc6403729e98a0796c48e59896fa222d6
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Thu Apr 25 09:45:28 2013 -0400
+[45fe424]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-25 09:45:28 -0400 (7 months ago)
 
-    Be more explicit with push master:master
-    Fix CommitBuild to not create random builds
-    Fix .travis.yml to run through deps faster
+Be more explicit with push master:master
+Fix CommitBuild to not create random builds
+Fix .travis.yml to run through deps faster
+
 
 v0.94 2013-04-22
 ----------------
 
-commit 8ae22fcee32f6b8ddebcb842d9157563e2845f2e
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Mon Apr 22 16:27:31 2013 -0400
+[8ae22fc]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-22 16:27:31 -0400 (7 months ago)
 
-    Update .travis.yml with new DZIL:P:TCI defaults
+Update .travis.yml with new DZIL:P:TCI defaults
 
-commit d99b8f45d866aa709108ddbc78c07a6b93257a70
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Mon Apr 22 10:45:22 2013 -0400
+[d99b8f4]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2013-04-22 10:45:22 -0400 (7 months ago)
 
-    Add new Pod::Weaver::PluginBundle::Author::BBYRD
+Add new Pod::Weaver::PluginBundle::Author::BBYRD
 
-v0.93 2012-10-17
-----------------
-
-commit b395ec4299c1ae2c0aa748f43c520a51f46fe241
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Wed Oct 17 13:58:00 2012 -0400
-
-    Release v0.93
-
-commit bcc0084b89b69e7a846611c198e96c6ade71fcb1
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Tue Oct 16 11:56:47 2012 -0400
-
-    Add [MetaYAML] back in
-
-v0.92 2012-10-02
-----------------
-
-commit 1325030d6e61ccbbc650b7d3f7f5c3b478cd5e8f
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Tue Oct 2 11:30:59 2012 -0400
-
-    Release v0.92
-
-commit e89f92b1e221d25aa502af361081c82e3280ee2f
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Tue Oct 2 11:29:24 2012 -0400
-
-    Fix MetaResourcesFromGit call
-
-v0.91 2012-10-02
-----------------
-
-commit 649910d9a8bbfb5131f008a7d6f389be34329c60
-Author: Brendan Byrd <Perl@ResonatorSoft.org>
-Date:   Tue Oct 2 08:39:23 2012 -0400
-
-    Fix POD
 
 ===================================
 End of changes in the last 365 days

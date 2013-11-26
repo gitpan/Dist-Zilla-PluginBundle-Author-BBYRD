@@ -1,6 +1,6 @@
 package Dist::Zilla::MintingProfile::Author::BBYRD;
 
-our $VERSION = '0.99'; # VERSION
+our $VERSION = '1.00'; # VERSION
 # ABSTRACT: DZIL MintingProfile for BBYRD
 
 use sanity;
@@ -14,7 +14,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -45,7 +45,7 @@ for more information.
 
 =head1 AVAILABILITY
 
-The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/wiki>.
+The project homepage is L<https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
