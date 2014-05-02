@@ -1,31 +1,33 @@
 NAME
+
     Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
 
 SYNOPSIS
+
         ; Very similar to...
- 
+     
         [ReportPhase]
- 
+     
         ; Makefile.PL maker
         [MakeMaker]
- 
+     
         [Git::NextVersion]
         first_version = 0.90
- 
+     
         [Git::GatherDir]
- 
+     
         ; File modifiers
         [OurPkgVersion]
         [PodWeaver]
         config_plugin = @Author::BBYRD
- 
+     
         ; File pruners
         [PruneCruft]
- 
+     
         ; Extra file creation
         [GitFmtChanges]
         log_format = [%h]%n* Author: %an <%ae>%n* Date:   %ai (%ar)%n%n%B
- 
+     
         [ManifestSkip]
         [Manifest]
         [License]
@@ -34,22 +36,21 @@ SYNOPSIS
         [ReadmeAnyFromPod / ReadmeHTMLInBuild]  ; HTML README for Build (never POD, so it doesn't get installed)
         [InstallGuide]
         [ExecDir]
- 
+     
         ; t/* tests
         [Test::Compile]
- 
+     
         ; POD tests
         [PodCoverageTests]
         [PodSyntaxTests]
         ;[Test::PodSpelling]  ; Win32 install problems
- 
+     
         ; Other xt/* tests
         [RunExtraTests]
         ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-        [NoTabsTests]
         [Test::EOL]
         trailing_whitespace = 0
- 
+     
         [Test::CPAN::Meta::JSON]
         [Test::CheckDeps]
         [Test::Portability]
@@ -61,52 +62,51 @@ SYNOPSIS
         [Test::CheckManifest]
         [Test::DistManifest]
         [Test::Version]
- 
+        [Test::NoTabs]
+     
         ; Prereqs
         [@Prereqs]
         minimum_perl = 5.10.1
- 
+     
         [CheckPrereqsIndexed]
- 
+     
         ; META maintenance
         [MetaConfig]
         [MetaJSON]
         [MetaYAML]
- 
+     
         [MetaNoIndex]
         directory = t
         directory = xt
         directory = examples
         directory = corpus
- 
+     
         [MetaProvides::Package]
         meta_noindex = 1        ; respect prior no_index directives
- 
+     
         [GithubMeta]
         issues = 1
         user   = SineSwiper
- 
+     
         [ContributorsFromGit]
- 
+     
         ; Post-build plugins
         [CopyFilesFromBuild]
         move = .gitignore
         move = README.pod
- 
+     
         ; Post-build Git plugins
         [TravisYML]
         notify_irc = irc://irc.perl.org/#sanity
         ; keep sanity from balking at these
-        pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-        ; don't test Perl 5.8
-        perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
- 
+        post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
+     
         [Git::CheckFor::CorrectBranch]
         [Git::CommitBuild]
         branch =
         release_branch = build/%b
         release_message = Release build of v%v (on %b)
- 
+     
         [@Git]
         allow_dirty = dist.ini
         allow_dirty = .travis.yml
@@ -115,94 +115,107 @@ SYNOPSIS
         commit_msg = Release v%v
         push_to = origin master:master
         push_to = origin build/master:build/master
- 
+     
         [GitHub::Update]
         metacpan = 1
- 
+     
         [TestRelease]
         [ConfirmRelease]
         [UploadToCPAN]
         [InstallRelease]
         [Clean]
- 
+     
         ; sanity deps
         ; authordep autovivification
         ; authordep indirect
         ; authordep multidimensional
 
 DESCRIPTION
+
     I frelling hate these things, but several releases in, I found myself
-    needing to keep my "dist.ini" stuff in sync, which requires a single
+    needing to keep my dist.ini stuff in sync, which requires a single
     module to bind them to.
 
 NAMING SCHEME
+
     I'm a strong believer in structured order in the chaos that is the CPAN
-    namespace. There's enough cruft in CPAN, with all of the forked modules,
-    legacy stuff that should have been removed 10 years ago, and confusion
-    over which modules are available vs. which ones actually work. (Which
-    all stem from the same base problem, so I'm almost repeating myself...)
+    namespace. There's enough cruft in CPAN, with all of the forked
+    modules, legacy stuff that should have been removed 10 years ago, and
+    confusion over which modules are available vs. which ones actually
+    work. (Which all stem from the same base problem, so I'm almost
+    repeating myself...)
 
     Like I said, I hate writing these personalized modules on CPAN. I even
     bantered around the idea of using MetaCPAN's author JSON input
-    <https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/m
-    aster/BeLike-You.pod> to store the plugin data. However, keeping the
+    <https://github.com/SineSwiper/Dist-Zilla-PluginBundle-BeLike-You/blob/
+    master/BeLike-You.pod> to store the plugin data. However, keeping the
     Author plugins separated from the real PluginBundles is a step in the
     right direction. See KENTNL's comments on the Author namespace for more
     information.
 
 CAVEATS
+
     This uses Dist::Zilla::Role::PluginBundle::Merged, so all of the
     plugins' arguments are available, using Merged's rules. Special care
     should be made with arguments that might not be unique with other
-    plugins. (Eventually, I'll throw these into "config_rename".)
+    plugins. (Eventually, I'll throw these into config_rename.)
 
     If this is a problem, you might want to consider using @Filter.
 
-    One exception is "x_irc", which is detected and passed to
+    One exception is x_irc, which is detected and passed to
     MetaResourcesFromGit properly.
 
 SEE ALSO
-    In building my ultimate "dist.ini" file, I did a bunch of research on
+
+    In building my ultimate dist.ini file, I did a bunch of research on
     which modules to cram in here. As a result, this is a pretty large set
-    of plugins, but that's exactly how I like my DZIL. Feel free to research
-    the modules listed here, as there's a bunch of good modules that you
-    might want to include in your own "dist.ini" and/or Author bundle.
+    of plugins, but that's exactly how I like my DZIL. Feel free to
+    research the modules listed here, as there's a bunch of good modules
+    that you might want to include in your own dist.ini and/or Author
+    bundle.
 
 AVAILABILITY
+
     The project homepage is
-    <https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD>.
+    https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD.
 
     The latest version of this module is available from the Comprehensive
-    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    Perl Archive Network (CPAN). Visit http://www.perl.com/CPAN/ to find a
     CPAN site near you, or see
-    <https://metacpan.org/module/Dist::Zilla::PluginBundle::Author::BBYRD/>.
+    https://metacpan.org/module/Dist::Zilla::PluginBundle::Author::BBYRD/.
 
 SUPPORT
-  Internet Relay Chat
-    You can get live help by using IRC ( Internet Relay Chat ). If you don't
-    know what IRC is, please read this excellent guide:
-    <http://en.wikipedia.org/wiki/Internet_Relay_Chat>. Please be courteous
-    and patient when talking to us, as we might be busy or sleeping! You can
-    join those networks/channels and get help:
 
-    *   irc.perl.org
+ Internet Relay Chat
 
-        You can connect to the server at 'irc.perl.org' and talk to this
-        person for help: SineSwiper.
+    You can get live help by using IRC ( Internet Relay Chat ). If you
+    don't know what IRC is, please read this excellent guide:
+    http://en.wikipedia.org/wiki/Internet_Relay_Chat. Please be courteous
+    and patient when talking to us, as we might be busy or sleeping! You
+    can join those networks/channels and get help:
 
-  Bugs / Feature Requests
+      * irc.perl.org
+
+      You can connect to the server at 'irc.perl.org' and talk to this
+      person for help: SineSwiper.
+
+ Bugs / Feature Requests
+
     Please report any bugs or feature requests via
-    <https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issu
-    es>.
+    https://github.com/SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD/issu
+    es.
 
 AUTHOR
+
     Brendan Byrd <BBYRD@CPAN.org>
 
 CONTRIBUTOR
+
     Sergey Romanov <complefor@rambler.ru>
 
 COPYRIGHT AND LICENSE
-    This software is Copyright (c) 2013 by Brendan Byrd.
+
+    This software is Copyright (c) 2014 by Brendan Byrd.
 
     This is free software, licensed under:
 

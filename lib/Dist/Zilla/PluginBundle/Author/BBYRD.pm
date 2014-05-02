@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
-our $VERSION = '1.00'; # VERSION
+our $VERSION = '1.01'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -8,7 +8,7 @@ use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Merged' => {
    mv_plugins => [ qw(
-      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile NoTabsTests
+      Git::GatherDir OurPkgVersion PodWeaver Test::ReportPrereqs Test::Compile Test::NoTabs
       PruneCruft @Prereqs CheckPrereqsIndexed MetaNoIndex CopyFilesFromBuild
       Git::CheckFor::CorrectBranch @Git TravisYML
    ) ],
@@ -79,8 +79,7 @@ sub configure {
       # ; Other xt/* tests
       # [RunExtraTests]
       # ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-      # [NoTabsTests]
-      qw( InstallGuide ExecDir Test::Compile PodCoverageTests PodSyntaxTests RunExtraTests NoTabsTests ),
+      qw( InstallGuide ExecDir Test::Compile PodCoverageTests PodSyntaxTests RunExtraTests ),
 
       # [Test::EOL]
       # trailing_whitespace = 0
@@ -101,7 +100,8 @@ sub configure {
       # [Test::CheckManifest]
       # [Test::DistManifest]
       # [Test::Version]
-      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version)),
+      # [Test::NoTabs]
+      (map { 'Test::'.$_ } qw(CPAN::Meta::JSON CheckDeps Portability Synopsis MinimumVersion ReportPrereqs CheckManifest DistManifest Version NoTabs)),
 
       #
       # ; Prereqs
@@ -158,13 +158,10 @@ sub configure {
       # [TravisYML]
       # notify_irc = irc://irc.perl.org/#sanity
       # ; keep sanity from balking at these
-      # pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-      # ; don't test Perl 5.8
-      # perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+      # post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
       $self->config_short_merge('TravisYML', {
          notify_irc => 'irc://irc.perl.org/#sanity',
-         pre_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
-         perl_version => '5.19 5.18 5.16 5.14 5.12 5.10',
+         post_before_install_build => 'cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional',
       }),
 
       #
@@ -269,7 +266,6 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     ; Other xt/* tests
     [RunExtraTests]
     ;[MetaTests]  ; until Test::CPAN::Meta supports 2.0
-    [NoTabsTests]
     [Test::EOL]
     trailing_whitespace = 0
  
@@ -284,6 +280,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [Test::CheckManifest]
     [Test::DistManifest]
     [Test::Version]
+    [Test::NoTabs]
  
     ; Prereqs
     [@Prereqs]
@@ -320,9 +317,7 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
     [TravisYML]
     notify_irc = irc://irc.perl.org/#sanity
     ; keep sanity from balking at these
-    pre_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
-    ; don't test Perl 5.8
-    perl_version = 5.19 5.18 5.16 5.14 5.12 5.10
+    post_before_install_build = cpanm --quiet --notest --skip-satisfied autovivification indirect multidimensional
  
     [Git::CheckFor::CorrectBranch]
     [Git::CommitBuild]
@@ -437,7 +432,7 @@ Sergey Romanov <complefor@rambler.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2013 by Brendan Byrd.
+This software is Copyright (c) 2014 by Brendan Byrd.
 
 This is free software, licensed under:
 
