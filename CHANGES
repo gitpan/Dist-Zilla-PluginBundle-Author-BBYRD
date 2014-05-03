@@ -1,12 +1,48 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v1.02 2014-05-03
+----------------
+
+[447eaf1]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-05-03 01:17:36 -0400 (14 hours ago)
+
+Add open_status_url option to Travis::TestRelease
+
+[8cc1bc8]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-05-02 22:20:44 -0400 (17 hours ago)
+
+Use ::Role::BundleDeps
+
+[39fbc80]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-05-02 22:19:21 -0400 (17 hours ago)
+
+Add authority
+
+[cb2fcb0]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-05-02 21:00:02 -0400 (18 hours ago)
+
+Add Travis::TestRelease and other Travis changes
+
+Add @TestingMania
+
+
 v1.01 2014-05-01
 ----------------
 
+[05039c0]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-05-01 22:40:38 -0400 (2 days ago)
+
+Release v1.01
+
 [236fdfc]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-01 21:54:59 -0400 (44 minutes ago)
+* Date:   2014-05-01 21:54:59 -0400 (2 days ago)
 
 Change NoTabsTests to Test::NoTabs
 

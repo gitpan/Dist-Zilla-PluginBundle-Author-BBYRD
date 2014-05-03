@@ -1,20 +1,21 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
-our $VERSION = '1.01'; # VERSION
+our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
+our $VERSION = '1.02'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;
- 
+
 use Pod::Weaver 3.101635; # fixed ABSTRACT scanning
 use Pod::Weaver::Config::Assembler;
- 
+
 # Dependencies
 use Pod::Weaver::Plugin::WikiDoc ();
 use Pod::Weaver::Section::Availability ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001        ();
 use Pod::Weaver::Section::Contributors ();
- 
+
 sub _exp { Pod::Weaver::Config::Assembler->expand_package( $_[0] ) }
 
 ### TODO: Consider a simplified version of this a la DZIL:R:PB:Merged?
@@ -24,16 +25,16 @@ sub mvp_bundle_config {
       # [-SingleEncoding]
       # [-WikiDoc]
       # [@CorePrep]
-      #  
+      #
       # [Name]
 
       [ '@Author::BBYRD/SingleEncoding', _exp('-SingleEncoding'), {} ],
       [ '@Author::BBYRD/WikiDoc',        _exp('-WikiDoc'),        {} ],
       [ '@Author::BBYRD/CorePrep',       _exp('@CorePrep'),       {} ],
       [ '@Author::BBYRD/Name',           _exp('Name'),            {} ],
- 
+
       # [Region / prelude]
-      #  
+      #
       # [Generic / SYNOPSIS]
       # [Generic / DESCRIPTION]
       # [Generic / OVERVIEW]
@@ -43,14 +44,14 @@ sub mvp_bundle_config {
       [ '@Author::BBYRD/Description', _exp('Generic'), { header      => 'DESCRIPTION' } ],
       [ '@Author::BBYRD/Overview',    _exp('Generic'), { header      => 'OVERVIEW' } ],
    );
- 
+
    foreach my $plugin (
       # [Collect / ATTRIBUTES]
       # command = attr
-      #  
+      #
       # [Collect / METHODS]
       # command = method
-      #  
+      #
       # [Collect / FUNCTIONS]
       # command = func
 
@@ -65,15 +66,15 @@ sub mvp_bundle_config {
 
    push @plugins, (
       # [Leftovers]
-      #  
+      #
       # [Region / postlude]
-      #  
+      #
       # [Availability]
-      
+
       [ '@Author::BBYRD/Leftovers',    _exp('Leftovers'),    {} ],
       [ '@Author::BBYRD/postlude',     _exp('Region'),       { region_name => 'postlude' } ],
       [ '@Author::BBYRD/Availability', _exp('Availability'), {} ],
-      
+
       # [Support]
       # perldoc = 0
       # websites = none
@@ -81,7 +82,7 @@ sub mvp_bundle_config {
       # bugs = metadata
       # bugs_content = Please report any bugs or feature requests via {WEB}.
       # irc = irc.perl.org, #distzilla, SineSwiper
-      
+
       [ '@Author::BBYRD/Support', _exp('Support'), {
          perldoc            => 0,
          websites           => 'none',
@@ -91,11 +92,11 @@ sub mvp_bundle_config {
          ### XXX: Use a DZIL stash to store the IRC channel? ###
          irc                => 'irc.perl.org, SineSwiper',
       } ],
-      
+
       # [Authors]
       # [Contributors]
       # [Legal]
-      #  
+      #
       # [-Transformer]
       # transformer = List
 
@@ -104,7 +105,7 @@ sub mvp_bundle_config {
       [ '@Author::BBYRD/Legal',        _exp('Legal'),        {} ],
       [ '@Author::BBYRD/List',         _exp('-Transformer'), { 'transformer' => 'List' } ],
    );
- 
+
    return @plugins;
 }
 
@@ -179,7 +180,7 @@ configuration.
 =head1 NAMING SCHEME
 
 I'm a strong believer in structured order in the chaos that is the CPAN
-namespace.  There's enough cruft in CPAN, with all of the forked modules, 
+namespace.  There's enough cruft in CPAN, with all of the forked modules,
 legacy stuff that should have been removed 10 years ago, and confusion over
 which modules are available vs. which ones actually work.  (Which all stem
 from the same base problem, so I'm almost repeating myself...)

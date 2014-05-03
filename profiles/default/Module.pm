@@ -1,5 +1,6 @@
 package {{$name}};
 
+# AUTHORITY
 # VERSION
 # ABSTRACT: ---insert abstract here---
 
@@ -8,7 +9,7 @@ package {{$name}};
 
 use sanity;
 use Moo;
-use MooX::Types::MooseLike::Base qw();
+use Types::Tiny qw();
 
 ### INSERT MODULES HERE ###
 
