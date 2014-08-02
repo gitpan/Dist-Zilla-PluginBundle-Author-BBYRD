@@ -1,7 +1,7 @@
 package Pod::Weaver::PluginBundle::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.02'; # VERSION
+our $VERSION = '1.03'; # VERSION
 # ABSTRACT: Pod::Weaver Author Bundle for BBYRD
 
 use sanity;
