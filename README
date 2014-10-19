@@ -91,6 +91,9 @@ SYNOPSIS
      
         [ContributorsFromGit]
      
+        [MetaResources]  ; only loaded if needed
+        x_IRC = $x_IRC
+     
         ; Post-build plugins
         [CopyFilesFromBuild]
         move = .gitignore
@@ -169,8 +172,8 @@ CAVEATS
 
     If this is a problem, you might want to consider using @Filter.
 
-    One exception is x_irc, which is detected and passed to
-    MetaResourcesFromGit properly.
+    One exception is x_IRC, which is detected and passed to MetaResources
+    properly.
 
 SEE ALSO
 

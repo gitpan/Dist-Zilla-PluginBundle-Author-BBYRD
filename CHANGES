@@ -1,12 +1,28 @@
 Revision History for Dist-Zilla-PluginBundle-Author-BBYRD
 =========================================================
 
+v1.04 2014-10-19
+----------------
+
+[a16c76d]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-10-02 00:38:38 -0400 (2 weeks ago)
+
+Add support for x_IRC
+
+
 v1.03 2014-08-02
 ----------------
 
+[2a2b5bc]
+* Author: Brendan Byrd <Perl@ResonatorSoft.org>
+* Date:   2014-08-02 00:47:58 -0400 (3 months ago)
+
+Release v1.03
+
 [458722e]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-08-02 00:44:48 -0400 (2 minutes ago)
+* Date:   2014-08-02 00:44:48 -0400 (3 months ago)
 
 Add PluginBundle requirements
 
@@ -16,31 +32,31 @@ v1.02 2014-05-03
 
 [d9635da]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-03 19:50:55 -0400 (3 months ago)
+* Date:   2014-05-03 19:50:55 -0400 (6 months ago)
 
 Release v1.02
 
 [447eaf1]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-03 01:17:36 -0400 (3 months ago)
+* Date:   2014-05-03 01:17:36 -0400 (6 months ago)
 
 Add open_status_url option to Travis::TestRelease
 
 [8cc1bc8]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-02 22:20:44 -0400 (3 months ago)
+* Date:   2014-05-02 22:20:44 -0400 (6 months ago)
 
 Use ::Role::BundleDeps
 
 [39fbc80]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-02 22:19:21 -0400 (3 months ago)
+* Date:   2014-05-02 22:19:21 -0400 (6 months ago)
 
 Add authority
 
 [cb2fcb0]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-02 21:00:02 -0400 (3 months ago)
+* Date:   2014-05-02 21:00:02 -0400 (6 months ago)
 
 Add Travis::TestRelease and other Travis changes
 
@@ -52,13 +68,13 @@ v1.01 2014-05-01
 
 [05039c0]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-01 22:40:38 -0400 (3 months ago)
+* Date:   2014-05-01 22:40:38 -0400 (6 months ago)
 
 Release v1.01
 
 [236fdfc]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-05-01 21:54:59 -0400 (3 months ago)
+* Date:   2014-05-01 21:54:59 -0400 (6 months ago)
 
 Change NoTabsTests to Test::NoTabs
 
@@ -66,7 +82,7 @@ Also, fix some TravisYML settings
 
 [f8b6e7e]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2014-01-29 22:17:07 -0500 (6 months ago)
+* Date:   2014-01-29 22:17:07 -0500 (9 months ago)
 
 Add in Prereqs for module changes from v1.00
 
@@ -76,19 +92,19 @@ v1.00 2013-11-26
 
 [7a40e7d]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2013-11-26 00:04:49 -0500 (8 months ago)
+* Date:   2013-11-26 00:04:49 -0500 (11 months ago)
 
 Release v1.00
 
 [dfe62b3]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2013-11-23 23:16:43 -0500 (8 months ago)
+* Date:   2013-11-23 23:16:43 -0500 (11 months ago)
 
 Merge branch 'master' of github.com:SineSwiper/Dist-Zilla-PluginBundle-Author-BBYRD
 
 [7f9dba6]
 * Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2013-11-23 23:09:58 -0500 (8 months ago)
+* Date:   2013-11-23 23:09:58 -0500 (11 months ago)
 
 Change around a few modules
 
@@ -100,19 +116,9 @@ Add formatting to GitFmtChanges
 
 [101a295]
 * Author: Sergey Romanov <complefor@rambler.ru>
-* Date:   2013-11-16 06:31:52 +0400 (9 months ago)
+* Date:   2013-11-16 06:31:52 +0400 (11 months ago)
 
 change PWP::Encoding to PWP::SingleEncoding
-
-
-v0.99 2013-09-10
-----------------
-
-[2a23fa2]
-* Author: Brendan Byrd <Perl@ResonatorSoft.org>
-* Date:   2013-09-10 08:17:32 -0400 (11 months ago)
-
-Fix ModuleShareDirs, notify_irc, and .mailmap
 
 
 ===================================

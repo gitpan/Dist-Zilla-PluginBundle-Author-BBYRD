@@ -1,7 +1,7 @@
 package Dist::Zilla::MintingProfile::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.03'; # VERSION
+our $VERSION = '1.04'; # VERSION
 # ABSTRACT: DZIL MintingProfile for BBYRD
 
 use sanity;

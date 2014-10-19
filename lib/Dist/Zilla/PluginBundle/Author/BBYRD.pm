@@ -1,7 +1,7 @@
 package Dist::Zilla::PluginBundle::Author::BBYRD;
 
 our $AUTHORITY = 'cpan:BBYRD'; # AUTHORITY
-our $VERSION = '1.03'; # VERSION
+our $VERSION = '1.04'; # VERSION
 # ABSTRACT: DZIL Author Bundle for BBYRD
 
 use sanity;
@@ -156,7 +156,21 @@ sub configure {
       #
       # [ContributorsFromGit]
       'ContributorsFromGit',
+   );
 
+   # Handle $resources->{x_IRC}
+   my $x_IRC = $self->payload->{x_IRC} || $self->payload->{x_irc};
+   $self->add_merged(
+      #
+      # [MetaResources]  ; only loaded if needed
+      # x_IRC = $x_IRC
+
+      [MetaResources => {
+         x_IRC => $x_IRC,
+      }],
+   ) if $x_IRC;
+
+   $self->add_merged(
       #
       # ; Post-build plugins
       # [CopyFilesFromBuild]
@@ -337,6 +351,9 @@ Dist::Zilla::PluginBundle::Author::BBYRD - DZIL Author Bundle for BBYRD
  
     [ContributorsFromGit]
  
+    [MetaResources]  ; only loaded if needed
+    x_IRC = $x_IRC
+ 
     ; Post-build plugins
     [CopyFilesFromBuild]
     move = .gitignore
@@ -413,7 +430,7 @@ I'll throw these into C<<< config_rename >>>.)
 
 If this is a problem, you might want to consider using L<@Filter|Dist::Zilla::PluginBundle::Filter>.
 
-One exception is C<<< x_irc >>>, which is detected and passed to L<MetaResourcesFromGit|Dist::Zilla::Plugin::MetaResourcesFromGit>
+One exception is C<<< x_IRC >>>, which is detected and passed to L<MetaResources|Dist::Zilla::Plugin::MetaResources>
 properly.
 
 =head1 SEE ALSO
@@ -462,6 +479,8 @@ Please report any bugs or feature requests via L<https://github.com/SineSwiper/D
 Brendan Byrd <BBYRD@CPAN.org>
 
 =head1 CONTRIBUTOR
+
+=for stopwords Sergey Romanov
 
 Sergey Romanov <complefor@rambler.ru>
 
